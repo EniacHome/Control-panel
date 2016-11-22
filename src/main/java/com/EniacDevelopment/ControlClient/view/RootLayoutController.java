@@ -1,6 +1,7 @@
 package com.EniacDevelopment.ControlClient.view;
 
 import com.EniacDevelopment.ControlClient.App;
+import com.EniacDevelopment.ControlClient.util.TimeOut;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -20,6 +21,13 @@ public class RootLayoutController {
     //Replace the scene displayed in the sceneHolder with a new scene.
     public void setScene(Node node){
         sceneHolder.getChildren().setAll(node);
+    }
+
+    //Handle mouse input.
+    @FXML
+    private void handleEvent(ActionEvent event){
+        if(event.getSource() == App.getPrimaryStage().getScene())
+            System.out.println("TEST");
     }
 
     //Handle the security button.

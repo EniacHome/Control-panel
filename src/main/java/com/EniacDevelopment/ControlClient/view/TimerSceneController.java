@@ -19,5 +19,5 @@ import javafx.util.Duration;
  * Created by nickd on 10/4/2016.
  */
 public class TimerSceneController {
-    //
+
 }

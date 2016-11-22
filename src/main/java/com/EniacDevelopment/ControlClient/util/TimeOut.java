@@ -16,9 +16,10 @@ import javafx.util.Duration;
 //Todo work out a way to find out if an player is active. http://stackoverflow.com/questions/27162374/javafx-2-user-idle-detection
 public class TimeOut {
     private static Timeline timeLine;
-    private static final int DEFAULT_TIMEOUT = 10;
     private static boolean isActive = false;
+    private static int default_timeout = 5;
 
+    //setTimerTimeoutTime with an given time
     public static void setTimerTimeoutTime(int minutes){
         timeLine = new Timeline(new KeyFrame(Duration.minutes(minutes), new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -34,8 +35,9 @@ public class TimeOut {
         timeLine.setCycleCount(Timeline.INDEFINITE);
     }
 
+    //setTimerTimeoutTime without an given time
     public static void setTimerTimeoutTime(){
-        timeLine = new Timeline(new KeyFrame(Duration.minutes(DEFAULT_TIMEOUT), new EventHandler<ActionEvent>() {
+        timeLine = new Timeline(new KeyFrame(Duration.minutes(default_timeout), new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 if(StageNavigator.getStageTitle() == StageNavigator.LOGIN_SCREEN){
                     return;
@@ -64,5 +66,15 @@ public class TimeOut {
             timeLine.stop();
             isActive = false;
         }
+    }
+
+    public static void resetTimer(){
+        stopTimer();
+        setTimerTimeoutTime();
+        activateTimer();
+    }
+
+    public static void setDefaultTimeout(int timeout){
+        default_timeout = timeout;
     }
 }
